@@ -16,31 +16,28 @@ def swapArrayToNew[T](a: Array[T]) = {
   indexs map (a(_))
 }
 
-def positiveAndNegative(a: Array[Int]) = a.filter(_>0) ++ a.filter(!_<=0)
+def positiveAndNegative(a: Array[Int]) = a.filter(_>0) ++ a.filter(_<=0)
+
+
+
+
 
 def average(a: Array[Double]): Double = a.sum/a.length
-
 import collection.mutable.ArrayBuffer
-import scala.utils.Sorting.qsort
-
-def revSortA(a: Array[Int]) = a qsort reverse
+import scala.util.Sorting._
+def revSortA(a: Array[Int]) = {
+  quickSort(a)
+  a.reverse
+}
 def revSortAB(a: ArrayBuffer[Int]) = (a sortWith(_>_)).reverse
+
 
 def onlyUniuq[T](a: Array[T]) = a filter(x => a.count(x == _) == 1)
 
-import scala.Collection.JavaConversions._
+import scala.collection.JavaConversions._
 import java.util.TimeZone
-val allAmer =  TimeZone.getAvailableIDs() map (_.replace("America/", ""))
-
-
-
-
-
-
-
-
-
-
+val allAmer =  TimeZone.getAvailableIDs().filter(
+  _.startsWith("America")) map (_.replace("America/", ""))
 
 
 
